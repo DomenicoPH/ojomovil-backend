@@ -1,10 +1,13 @@
 import express from 'express';
 import cors from 'cors';
+import festivalRoutes from './routes/festival.routes';
 
 export const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/festival', festivalRoutes);
 
 app.get('/health', (_req, res) => {
     res.json({ status: "ok" });
