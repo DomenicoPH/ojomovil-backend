@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// 1. Generators
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+// 2. Data source
+datasource db {
+  provider = "postgresql"
+}
+
+// 3. Modelos
+model User {
+  id              String      @id @default(uuid())
+  email           String      @unique
+  passwordHash    String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model FestivalEdition {
+  id              String      @id @default(uuid())
+  year            Int
+  title           String
+  description     String?
+  isCurrent       Boolean     @default(false)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  shortFilms      ShortFilm[]
+}
+
+model ShortFilm {
+  id                    String              @id @default(uuid())
+  title                 String
+  slug                  String              @unique
+  description           String?
+  embedUrl              String
+  duration              Int?
+  year                  Int?
+  published             Boolean             @default(false)
+
+  festivalEditionId     String
+  festivalEdition       FestivalEdition     @relation(fields: [festivalEditionId], references: [id])
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+}
+
+model BlogPost {
+  id              String        @id @default(uuid())
+  title           String
+  slug            String        @unique
+  excerpt         String?
+  content         String
+  category        String?
+  published       Boolean       @default(false)
+  publishedAt      DateTime?
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
