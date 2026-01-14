@@ -36,3 +36,35 @@ export const getBlogPostBySlug = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
+
+// POST
+
+// Crear un nuevo post
+export const createBlogPost = async (req: Request, res: Response) => {
+    try {
+
+        const { title, slug, excerpt, content, category, published } = req.body;
+        const post = await prisma.blogPost.create({
+            data: {
+                title, 
+                slug, 
+                excerpt, 
+                content, 
+                category, 
+                published, 
+                publishedAt: published ? new Date() : null
+            }
+        });
+        res.status(201).json(post);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+// PUT
+
+// Modificar un post
+
+// DELETE
