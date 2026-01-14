@@ -18,3 +18,4 @@ Populate database:
     npx prisma migrate dev          // despliega la base de datos
     npx prisma migrate reset        // limpia la base de datos
     npx ts-node-dev src/seed.ts     // popula la base de datos (seed.ts)
+
