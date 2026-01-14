@@ -38,6 +38,16 @@ async function main() {
   });
   console.log("FestivalEdition pasada creada:", festivalPast.title);
 
+  const festivalPast2 = await prisma.festivalEdition.create({
+    data: {
+      year: 2024,
+      title: "OJO MOVIL 2024",
+      description: "Edición pasada del festival",
+      isCurrent: false,
+    },
+  });
+  console.log("FestivalEdition pasada creada:", festivalPast2.title);
+
   // 3️ Crear ShortFilms
   const shortFilmsData = [
     {
