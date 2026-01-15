@@ -5,6 +5,7 @@ import festivalAdminRoutes from './routes/festival.admin.routes';
 import blogPostRoutes from './routes/blogPost.routes';
 import blogPostAdminRoutes from './routes/blogPost.admin.routes';
 import authRoutes from './auth/auth.routes';
+import shortFilmRoutes from './routes/shortFilm.routes';
 
 export const app = express();
 
@@ -17,6 +18,9 @@ app.use('/blog', blogPostRoutes);
 
 // auth
 app.use('/auth', authRoutes);
+
+// private user routes (JWT required)
+app.use('/shortfilms', shortFilmRoutes);
 
 // admin routes
 app.use('/admin/festival', festivalAdminRoutes);

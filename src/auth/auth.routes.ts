@@ -5,7 +5,7 @@ import {
     me,
     logout
 } from './auth.controller';
-import { authMiddleware } from './auth.middleware';
+import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
