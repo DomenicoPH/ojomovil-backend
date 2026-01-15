@@ -4,6 +4,7 @@ import festivalRoutes from './routes/festival.routes';
 import festivalAdminRoutes from './routes/festival.admin.routes';
 import blogPostRoutes from './routes/blogPost.routes';
 import blogPostAdminRoutes from './routes/blogPost.admin.routes';
+import authRoutes from './auth/auth.routes';
 
 export const app = express();
 
@@ -14,9 +15,13 @@ app.use(express.json());
 app.use('/festival', festivalRoutes);
 app.use('/blog', blogPostRoutes);
 
+// auth
+app.use('/auth', authRoutes);
+
 // admin routes
 app.use('/admin/festival', festivalAdminRoutes);
 app.use('/admin/blog', blogPostAdminRoutes);
+
 
 app.get('/health', (_req, res) => {
     res.json({ status: "ok" });

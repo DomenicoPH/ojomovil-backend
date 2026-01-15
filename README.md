@@ -8,6 +8,7 @@
     npm i @prisma/adapter-pg pg
     npm i --save-dev @types/pg
     npm i --save-dev @types/bcrypt
+    npm i --save-dev @types/jsonwebtoken
 
 Inicializar Prisma:  
 
@@ -19,3 +20,6 @@ Populate database:
     npx prisma migrate reset        // limpia la base de datos
     npx ts-node-dev src/seed.ts     // popula la base de datos (seed.ts)
 
+Lanzar Prisma Studio:
+
+    npx prisma studio
