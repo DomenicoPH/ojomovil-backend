@@ -4,7 +4,9 @@ import { authMiddleware } from "../middlewares/auth.middleware";
 
 const router = Router();
 
-router.get('/', authMiddleware, getShortFilms);
-router.get('/:id', authMiddleware, getShortFilmById);
+router.use(authMiddleware);
+
+router.get('/', getShortFilms);
+router.get('/:id', getShortFilmById);
 
 export default router;
